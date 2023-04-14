@@ -3,8 +3,40 @@ import React from 'react';
 import ButtonCta from '../buttonCta';
 import InputForm from '../input';
 
-export default function Shipping(){
+import { FormType, HeaderType } from '../../screens/Home';
 
+type Props = {
+    onFormChange: (newForm: FormType) => void;
+    onHeaderChange: (header: HeaderType[]) => void;
+}
+
+
+
+export default function Shipping( { onFormChange, onHeaderChange } : Props){
+
+    const handleChangeForm = () => {
+        onFormChange('payment')
+        onHeaderChange([
+            {
+                name: 'Shipping', 
+                num: 1,
+                active: true,
+                concluded: true,
+            },
+            {
+                name: 'Payment', 
+                num: 2,
+                active: true,
+                concluded: false,
+            },
+            {
+                name: 'Review', 
+                num: 3,
+                active: false,
+                concluded: false,
+            }
+        ])
+    }
     return (
         <Box
             alignItems="center"
@@ -14,17 +46,25 @@ export default function Shipping(){
             justifyContent="space-between"
            
         >
+                        
             <Box
                 w="100%"
                 alignItems="center"
             >
-            
+                <Text
+                    fontWeight="bold"
+                    fontSize={22}
+                    w="100%"
+                    marginY={5}
+                >
+                    Enter your shipping address
+                </Text>
+
                 <Box
                     w="100%"
-                    marginBottom={3}
                 >
                     <Pressable flexDirection="row">
-                        <Text fontSize={16}>
+                        <Text fontSize={18}>
                             Country
                         </Text>
                         <Text color="#0BADA2" marginLeft={1}>
@@ -34,15 +74,16 @@ export default function Shipping(){
 
                     <InputForm
                        placeholder='Country'
+                       isInvalid
+                    //    errorMessage="Name is Country invalid"
                     />
                 </Box>
                 
                 <Box
                     w="100%"
-                    marginBottom={3}
                 >
                     <Pressable flexDirection="row">
-                        <Text fontSize={16}>
+                        <Text fontSize={18}>
                             Full name 
                         </Text>
                         <Text color="#0BADA2" marginLeft={1}>
@@ -56,10 +97,9 @@ export default function Shipping(){
 
                 <Box
                     w="100%"
-                    marginBottom={3}
                 >
                     <Pressable flexDirection="row">
-                        <Text fontSize={16}>
+                        <Text fontSize={18}>
                             Street address 
                         </Text>
                         <Text color="#0BADA2" marginLeft={1}>
@@ -73,10 +113,9 @@ export default function Shipping(){
                 
                 <Box
                     w="100%"
-                    marginBottom={3}
                 >
                     <Pressable>
-                        <Text fontSize={16}>
+                        <Text fontSize={18}>
                             Other
                         </Text>
                     </Pressable>
@@ -87,9 +126,7 @@ export default function Shipping(){
             
             </Box>
             
-            <ButtonCta
-                title="Confirm and continue"
-            />
+            <ButtonCta title="Confirm and continue" onPress={handleChangeForm}/>
     
         </Box>
     );

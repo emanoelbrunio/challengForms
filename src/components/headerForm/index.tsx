@@ -1,27 +1,13 @@
 import { HStack } from "native-base";
 import OptionHeaderForm from "../optionHeaderForm";
+import { HeaderType } from "../../screens/Home";
 
-const data = [
-    {
-        name: 'Shipping', 
-        num: 1,
-        active: true,
-        concluded: false,
-    },
-    {
-        name: 'Payment', 
-        num: 2,
-        active: false,
-        concluded: false,
-    },
-    {
-        name: 'Review', 
-        num: 3,
-        active: false,
-        concluded: false,
-    }
-]
-export function HeaderForm(){
+
+type Props = {
+    data: HeaderType[];
+}
+
+export function HeaderForm( {data} : Props){
 
     return (
         <HStack
@@ -29,10 +15,12 @@ export function HeaderForm(){
             justifyContent="space-between"
             padding={5}
 
-            bg="#ebebeb"
+            bg="#f9f9f9"
+            borderBottomColor="#c4c4c4"
+            borderBottomWidth={0.2}
         >
             {
-                data.map( item => <OptionHeaderForm item={ item  } />)
+                data.map( (item, key )=> <OptionHeaderForm item={ item  } />)
             }
         </HStack>
     )
