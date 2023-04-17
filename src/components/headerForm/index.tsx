@@ -1,13 +1,15 @@
 import { HStack } from "native-base";
 import OptionHeaderForm from "../optionHeaderForm";
-import { HeaderType } from "../../screens/Home";
+import { HeaderType, FormType } from "../../screens/Home";
 
 
 type Props = {
     data: HeaderType[];
+    onFormChange: (newForm: FormType) => void;
+    onHeaderChange: (header: HeaderType[]) => void;
 }
 
-export function HeaderForm( {data} : Props){
+export function HeaderForm( {data, onFormChange, onHeaderChange} : Props){
 
     return (
         <HStack
@@ -20,7 +22,8 @@ export function HeaderForm( {data} : Props){
             borderBottomWidth={0.2}
         >
             {
-                data.map( (item, key )=> <OptionHeaderForm item={ item  } />)
+                data.map( (item, key )=> <OptionHeaderForm item={ item  } onFormChange={onFormChange}
+                onHeaderChange={onHeaderChange}/>)
             }
         </HStack>
     )

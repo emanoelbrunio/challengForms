@@ -83,6 +83,8 @@ export function Home() {
 
             <HeaderForm
                 data={header}
+                onFormChange={ handleFormChange } onHeaderChange= { handleHeaderChange }
+
             />
 
             {

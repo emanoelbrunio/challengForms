@@ -1,19 +1,82 @@
-import { Box, HStack, Text } from "native-base";
+import { Box, HStack, Pressable, Text } from "native-base";
 import Check from '../../assets/checked.svg'
 
-type Prop = {
+import { FormType, HeaderType } from "../../screens/Home";
+
+type Item = {
     name: string;
     num: number;
     active: boolean;
     concluded: boolean;
 }
 
-export default function OptionHeaderForm({ item }: { item : Prop} ){
+type Props = {
+    item: Item;
+    onFormChange: (newForm: FormType) => void;
+    onHeaderChange: (header: HeaderType[]) => void;
+}
+
+export default function OptionHeaderForm({ item, onFormChange, onHeaderChange } : Props ){
+
+    const handleChangeForm = (item: Item) => {
+
+        if (item.num === 1 ){
+            onFormChange('shipping')
+            onHeaderChange([
+                {
+                    name: 'Shipping', 
+                    num: 1,
+                    active: true,
+                    concluded: false,
+                },
+                {
+                    name: 'Payment', 
+                    num: 2,
+                    active: false,
+                    concluded: false,
+                },
+                {
+                    name: 'Review', 
+                    num: 3,
+                    active: false,
+                    concluded: false,
+                }
+            ])
+        }
+
+        else if (item.num === 2){
+            onFormChange('payment')
+            onHeaderChange([
+                {
+                    name: 'Shipping', 
+                    num: 1,
+                    active: true,
+                    concluded: true,
+                },
+                {
+                    name: 'Payment', 
+                    num: 2,
+                    active: true,
+                    concluded: false,
+                },
+                {
+                    name: 'Review', 
+                    num: 3,
+                    active: false,
+                    concluded: false,
+                }
+            ])
+        }
+
+    }
     return (
         <>
             {
                 item.concluded ? (
-                    <HStack>
+                    <Pressable
+                        flexDir="row"
+                        onPress={() => handleChangeForm(item)}
+                    >
                         <Box
                             bg="#0BADA2"
                             w={7}
@@ -32,9 +95,9 @@ export default function OptionHeaderForm({ item }: { item : Prop} ){
                         >          
                             { item.name }
                         </Text>
-                    </HStack>
+                    </Pressable>
                 ) : (
-                    <HStack>
+                    <Pressable flexDir="row">
                         <Box
                             bg={`${ item.active ? "#000" : "#98999A" }`}
                             w={7}
@@ -58,7 +121,7 @@ export default function OptionHeaderForm({ item }: { item : Prop} ){
                         >
                             { item.name }
                         </Text>
-                    </HStack>
+                    </Pressable>
                     )
             }
             
