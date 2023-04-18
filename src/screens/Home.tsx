@@ -36,7 +36,7 @@ const data: HeaderType[] = [
     }
 ]
 export function Home() {
-    const [form, setForm] = useState<FormType>("shipping");
+    const [form, setForm] = useState<FormType>("payment");
     const handleFormChange = (form: FormType) => {
         setForm(form)
     }
@@ -84,7 +84,6 @@ export function Home() {
             <HeaderForm
                 data={header}
                 onFormChange={ handleFormChange } onHeaderChange= { handleHeaderChange }
-
             />
 
             {
@@ -97,7 +96,6 @@ export function Home() {
                 )
             }
 
-            
         </Box>
     )
 }

@@ -1,4 +1,4 @@
-import { Box, HStack, Pressable, Text } from "native-base";
+import { Box, Pressable, Text } from "native-base";
 import Check from '../../assets/checked.svg'
 
 import { FormType, HeaderType } from "../../screens/Home";

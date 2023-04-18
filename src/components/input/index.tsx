@@ -18,6 +18,7 @@ export default function InputForm( { errorMessage = null, isInvalid, ...rest}: P
                 padding={4}
                 fontSize={16}
                 isInvalid={invalid}
+                
                 _invalid={{
                     backgroundColor: "#ff000015"
                 }}
