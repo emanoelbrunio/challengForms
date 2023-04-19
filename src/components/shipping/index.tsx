@@ -91,8 +91,7 @@ export default function Shipping( { onFormChange, onHeaderChange } : Props){
                     >
                         Enter your shipping address
                     </Text>
-                    
-                    
+                                        
                     <Box
                         w="100%"
                     >
