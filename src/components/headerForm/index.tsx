@@ -22,8 +22,8 @@ export function HeaderForm( {data, onFormChange, onHeaderChange} : Props){
             borderBottomWidth={0.2}
         >
             {
-                data.map( (item, key )=> <OptionHeaderForm item={ item  } onFormChange={onFormChange}
-                onHeaderChange={onHeaderChange}/>)
+                data.map( (item, key)=> <OptionHeaderForm item={ item  } onFormChange={onFormChange}
+                onHeaderChange={onHeaderChange} key={key}/>)
             }
         </HStack>
     )
